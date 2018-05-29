@@ -19,11 +19,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td class="d-none d-lg-block"></td>
-            <td></td>
-          </tr>
+          <tr *ngFor="let k of vinyls | keys ">
+            <td *ngIf="k.artist"> {{ k.artist }} </td>
+            <td class="d-none d-lg-block"> {{ vinyls[k].title }} </td>
+            <td> {{ vinyls[k].year }} </td>
+          </tr> 
         </tbody>
       </table>
     </div>

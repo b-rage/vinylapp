@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { VinylsService } from '../../services/vinyls.service';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+
+
 
 @Component({
   selector: 'app-vinyls',
@@ -8,7 +13,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class VinylsComponent implements OnInit {
 
-  constructor() { }
+  vinyls: any[] = [];
+
+  constructor( private _vinylsService: VinylsService ) {
+    this._vinylsService.getVinyls()
+        .subscribe( data => {
+          console.log(data);
+          this.vinyls = data;
+        });
+  }
 
   ngOnInit() {
   }
