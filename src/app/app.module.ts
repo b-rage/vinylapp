@@ -6,6 +6,10 @@ import { HttpModule } from '@angular/http';
 
 import { APP_ROUTING } from './app.routes';
 
+// services
+
+import { VinylsService } from './services/vinyls.service';
+
 
 import { AppComponent } from './app.component';
 import { VinylsComponent } from './components/vinyls/vinyls.component';
@@ -23,7 +27,9 @@ import { AddVinyilComponent } from './components/vinyls/add-vinyil.component';
     HttpModule,
     APP_ROUTING
   ],
-  providers: [],
+  providers: [
+    VinylsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
