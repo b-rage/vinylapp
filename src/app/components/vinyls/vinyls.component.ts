@@ -18,12 +18,23 @@ export class VinylsComponent implements OnInit {
   constructor( private _vinylsService: VinylsService ) {
     this._vinylsService.getVinyls()
         .subscribe( data => {
-          console.log(data);
           this.vinyls = data;
+          console.log(data);
         });
   }
 
   ngOnInit() {
+  }
+
+  deleteVinyl( key$: string ) {
+    this._vinylsService.deleteVinyl(key$)
+        .subscribe( res => {
+          if ( res ) {
+            console.error(res);
+          } else {
+            delete this.vinyls[key$];
+          }
+        });
   }
 
 }

@@ -18,7 +18,7 @@ export class AddVinyilComponent implements OnInit {
   vinyl: Vinyl = {
     artist: '',
     title: '',
-    year: 0
+    year: 2018
   };
 
   nuevo = false;

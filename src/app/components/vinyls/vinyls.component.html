@@ -7,22 +7,37 @@
     </button>  
 </div>
 
+<div class="container text-center mb-2">
+    <h4><span class="badge badge-pill badge-primary"> {{ (vinyls | keys).length }} </span></h4>
+</div>
+
 <div class="row animated fadeIn fast">
   <div class="col-md-12">
     <div class="table-responsive">
       <table class="table">
         <thead class="thead-inverse">
           <tr>
+            <th>Title</th>
             <th>Artist</th>
-            <th class="d-none d-lg-block">Title</th>
             <th>Year</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let k of vinyls | keys ">
-            <td *ngIf="k.artist"> {{ k.artist }} </td>
-            <td class="d-none d-lg-block"> {{ vinyls[k].title }} </td>
+          <tr *ngFor="let k of vinyls| keys">
+            <td> {{ vinyls[k].title }} </td>
+            <td> {{ vinyls[k].artist }} </td>
             <td> {{ vinyls[k].year }} </td>
+            <td>
+              <button [routerLink]="['/add-vinyil', k ]"
+                      type="button" class="btn btn-outline-success mr-2 mt-1">
+                    Edit
+              </button>
+              <button (click)="deleteVinyl(k)"
+                      type="button" class="btn btn-outline-danger mt-1">
+                    Delete
+              </button>
+            </td>
           </tr> 
         </tbody>
       </table>

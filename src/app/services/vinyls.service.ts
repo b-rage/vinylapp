@@ -58,4 +58,11 @@ export class VinylsService {
     return this.http.get( this.vinylsURL )
       .map( res => res.json());
   }
+
+  deleteVinyl( key$: string) {
+
+    const url = ` ${ this.vinylURL }/${ key$ }.json `;
+    return this.http.delete( url )
+        .map( res => res.json() );
+  }
 }
